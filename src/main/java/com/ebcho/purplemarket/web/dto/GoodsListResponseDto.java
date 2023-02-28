@@ -10,6 +10,8 @@ public class GoodsListResponseDto {
     private String name;
     private String category;
     private Long price;
+    private Long stock;
+    private Long sales;
     private Integer discount;
     private String image;
 
@@ -19,6 +21,8 @@ public class GoodsListResponseDto {
         this.name = entity.getName();
         this.category = entity.getCategory();
         this.price = entity.getPrice();
+        this.stock = entity.getStock();
+        this.sales = entity.getSales();
         this.discount = entity.getDiscount();
         this.image = entity.getImage();
     }

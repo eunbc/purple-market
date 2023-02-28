@@ -8,6 +8,7 @@ import com.ebcho.purplemarket.web.dto.GoodsSaveRequestDto;
 import com.ebcho.purplemarket.web.dto.GoodsUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -33,11 +34,17 @@ public class GoodsService {
         return goodsRepository.save(requestDto.toEntity()).getId();
     }
 
+    @Transactional
     public Long update(Long id, GoodsUpdateRequestDto requestDto) {
-        return null;
+        Goods entity = goodsRepository.findById(id).orElseThrow();
+        entity.update(requestDto);
+        return entity.getId();
     }
 
+    @Transactional
     public Long delete(Long id) {
-        return null;
+        Goods entity = goodsRepository.findById(id).orElseThrow();
+        entity.delete();
+        return entity.getId();
     }
 }

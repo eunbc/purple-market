@@ -1,5 +1,6 @@
 package com.ebcho.purplemarket.domain.goods;
 
+import com.ebcho.purplemarket.web.dto.GoodsUpdateRequestDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -21,11 +22,11 @@ public class Goods {
     private String category;
     private Long price;
     private Integer discount;
-    private Long stock;
+    private Long stock = 0L;
     private String image;
     private String detail;
-    private Long sales;
-    private Boolean isDeleted;
+    private Long sales = 0L;
+    private Boolean isDeleted = Boolean.FALSE;
 
     @Builder
     public Goods(Long id, String name, String category, Long price, Integer discount, Long stock, String image, String detail, Long sales, Boolean isDeleted) {
@@ -39,5 +40,18 @@ public class Goods {
         this.detail = detail;
         this.sales = sales;
         this.isDeleted = isDeleted;
+    }
+
+    public void update(GoodsUpdateRequestDto requestDto) {
+        this.name = requestDto.getName();
+        this.category = requestDto.getCategory();
+        this.price = requestDto.getPrice();
+        this.discount = requestDto.getDiscount();
+        this.image = requestDto.getImage();
+        this.detail = requestDto.getDetail();
+    }
+
+    public void delete() {
+        isDeleted = Boolean.TRUE;
     }
 }
