@@ -19,12 +19,12 @@ public class IndexController {
 
     @GetMapping("/")
     public String index(Model model) {
-        model.addAttribute("goods",goodsService.findAll());
+//        model.addAttribute("goods",goodsService.findAll());
 //        SessionMember member = (SessionMember) httpSession.getAttribute("user");
 //        if(member!=null) {
 //            model.addAttribute("memberName",member.getName());
 //        }
-        return "index";
+        return "home";
     }
 
 //    @GetMapping("/recipe/save")
